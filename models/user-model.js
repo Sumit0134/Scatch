@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
+const joi=require("joi");
+
 const userSchema = mongoose.Schema({
     fullName: String,
     email: String,
     password: String,
-    contact: Number,
-    isAdmin: Boolean,
+    contact: String,
     cart: {
         type: Array,
         default: [],
@@ -16,5 +17,28 @@ const userSchema = mongoose.Schema({
     },
     picture: String,
 });
+
+const userJoiSchema=joi.object({
+    fullName: joi.string().min(3).max(50).required(),
+    email: joi.string().email().required(),
+    password: joi.string().min(6).max(50).required(),
+    contact: joi.string().min(10).max(15).optional(),
+    cart: joi.array().items(joi.string()).optional(),
+    orders: joi.array().items(joi.string()).optional(),
+    picture: joi.string().uri().optional(),
+});
+
+const loginJoiSchema=joi.object({
+    email: joi.string().email().required(),
+    password: joi.string().min(6).max(50).required(),
+});
+
+userSchema.statics.validateUser=function(data){
+    return userJoiSchema.validate(data);
+}
+
+userSchema.statics.validateLogin=function(data){
+    return loginJoiSchema.validate(data);
+}
 
 module.exports = mongoose.model("user", userSchema);
