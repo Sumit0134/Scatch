@@ -6,3 +6,69 @@ panelColor - 343E55
 textColor - ABC3F7
 price - 1200
 discount - 0
+
+bag2:-
+
+productName - Kyoto Traveler Backpack
+bgColor - DADDEC
+panelColor - 36373C
+textColor - DADDEC
+price - 900
+discount - 0
+
+bag3:-
+
+productName - Mei Carry-All
+bgColor - E8C330
+panelColor - B2B0AC
+textColor - E8C330
+price - 400
+discount - 0
+
+bag4:-
+
+productName - Himalaya Trek Duffel
+bgColor -  FFEBEC
+panelColor - 672D31
+textColor - FFEBEC
+price - 1800
+discount - 0
+
+bag5:-
+
+productName - Seoul Street Pack
+bgColor - C9C7CC
+panelColor - 464547
+textColor - C9C7CC
+price - 1500
+discount - 0
+
+bag6:-
+productName - Jade Silk Pouch
+bgColor - 311C02
+panelColor - 997549
+textColor - 311C02
+price - 600
+discount - 0
+
+bag7:-
+
+productName - Lotus Petal Handbag
+bgColor - 17140C
+panelColor - E8D5A9
+textColor - 17140C
+price - 300
+discount - 0
+
+bag8:-
+
+productName - Shan Bamboo Sling Bag
+bgColor - ECB79C
+panelColor - 9E5F40
+textColor - ECB79C
+price - 3000
+discount - 0
+
+
+
+

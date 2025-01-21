@@ -9,7 +9,7 @@ const productModel=require("../models/product-model");
 router.get("/", (req, res)=>{
     let error=req.flash("error");
 
-    res.render("index", {error});
+    res.render("index", {error, logged: false});
 })
 
 router.get("/shop", isLoggedIn, async (req, res)=>{
