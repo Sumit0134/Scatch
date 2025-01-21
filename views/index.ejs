@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scatch - A Premium Bag Shop</title>
+    <title>Scatch - Create or Login your Account</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <% if(error.length>0){ %>
-        <div class="absolute top-5 p-3 rounded-lg bg-red-500 text-white left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div id="flashError" class="absolute top-5 p-3 rounded-lg bg-red-500 text-white left-1/2 -translate-x-1/2 -translate-y-1/2">
             <span class="inline-block text-sm mt-1 mb-1">
                 <%= error %>
             </span>
@@ -40,5 +40,13 @@
             </div>
         </div>
     </div>
+
+    <script>
+        if (document.getElementById("flashError")) {
+        setTimeout(() => {
+            document.getElementById("flashError").style.display = "none";
+        }, 3000);
+        }
+    </script>
 </body>
 </html>

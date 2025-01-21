@@ -1,12 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scatch - A Premium Bag Shop</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
 </head>
+
 <body>
-    
+    <div class="w-full min-h-screen flex items-start px-20 py-20">
+
+        <div class="w-[25%] min-h-screen flex flex-col items-start">
+            <div class="flex gap-1 items-center">
+                <h3>Sort by:</h3>
+                <form action="">
+                    <select class="border-[1px] px-2 py-1 rounded-lg cursor-pointer outline-none" name="sortby">
+                        <option value="">Popular</option>
+                        <option value="">Newest</option>
+                    </select>
+                </form>
+            </div>
+
+            <div class="flex flex-col mt-20">
+                <a class="mb-2 block w-fit" href="">New Collection</a>
+                <a class="mb-2 block w-fit" href="">All Products</a>
+                <a class="mb-2 block w-fit" href="">Discounted Products</a>
+            </div>
+
+            <div class="flex gap-1 items-center mt-32">
+                <h3>Filter by:</h3>
+                <form action="">
+                    <select class="border-[1px] px-2 py-1 rounded-lg cursor-pointer outline-none" name="sortby">
+                        <option value="">Popular</option>
+                        <option value="">Newest</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="w-[75%] flex flex-col min-h-creen gap-5">
+            <div class="flex items-start gap-5 flex-wrap">
+                <% products.forEach(function(product){ %>
+                    <div class="w-60 flex flex-col bg-white shadow-md relative">
+                        <div class="w-full h-52 bg-[<%= product.bgColor %>] flex items-center justify-center">
+                            <img class="h-[12rem] object-contain" src="data:<%= product.image.contentType %>;base64,<%= product.image.data.toString('base64') %>" alt="<%= product.productName %>">
+                        </div>
+                        <div class="flex flex-col items-start bg-[<%= product.panelColor %>] px-3 py-3 text-[<%= product.textColor %>]">
+                            <h3><%= product.productName %></h3>
+                            <h4>Rs. <%= product.price %></h4>
+                        </div>
+                        <a class="w-7 h-7 bg-white flex items-center justify-center rounded-full absolute bottom-4 right-4" href="">
+                            <i class="ri-add-line"></i>
+                        </a>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

@@ -6,6 +6,10 @@ const bcrypt = require("bcrypt");
 
 const ownerModel = require("../models/owner-model");
 
+const isAdmin = require("../middlewares/isAdmin");
+
+const generateToken = require("../utils/generateToken");
+
 if (process.env.NODE_ENV === "development") {
     router.post("/create", async (req, res) => {
         try {
@@ -35,21 +39,27 @@ if (process.env.NODE_ENV === "development") {
                             fullName,
                             email,
                             password: hash,
+                            role: "admin",
                         });
+
+                        let token=generateToken(createdOwner);
+                        res.cookie("token", token);
 
                         res.status(201).send("Owner created successfully.");
                     }
                 })
             })
-
         } catch (err) {
             res.status(500).send(err.message);
         }
     })
 }
 
-router.get("/", (req, res) => {
-    res.send("Hey, it's working.");
+router.get("/admin", isAdmin, (req, res) => {
+    let error=req.flash("error");
+    let success=req.flash("success");
+
+    res.render("createProducts", {error, success});
 })
 
 module.exports = router;

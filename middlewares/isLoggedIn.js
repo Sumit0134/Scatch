@@ -13,7 +13,7 @@ const isLoggedIn = async (req, res, next) => {
         let decoded = jwt.verify(req.cookies.token, process.env.JWT_KEY);
 
         let user = await userModel
-            .findOne({ email: decoded.eamil })
+            .findOne({ email: decoded.email })
             .select("-password");
 
         req.user = user;

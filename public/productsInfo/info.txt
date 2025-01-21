@@ -1,0 +1,8 @@
+bag1:-
+
+productName - SakuraSling
+bgColor - ABC3F7
+panelColor - 343E55
+textColor - ABC3F7
+price - 1200
+discount - 0

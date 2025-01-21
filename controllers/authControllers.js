@@ -39,7 +39,7 @@ const registerUser = async (req, res) => {
                     let token = generateToken(createdUser);
                     res.cookie("token", token);
 
-                    res.status(201).render("shop");
+                    res.status(201).redirect("/shop");
                 }
             })
         })
@@ -80,7 +80,7 @@ const loginUser = async (req, res) => {
                 let token = generateToken(user);
                 res.cookie("token", token);
 
-                res.status(200).render("shop");
+                res.status(200).redirect("/shop");
             }
             else {
                 req.flash("error", "Email or Password is incorrect.");

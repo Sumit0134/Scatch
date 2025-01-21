@@ -12,6 +12,11 @@ const ownerSchema = mongoose.Schema({
     },
     gstin: String,
     picture: String,
+    role: {
+        type: String,
+        enum: ["owner", "admin"],
+        default: "owner",
+    },
 });
 
 const ownerJoiSchema=joi.object({
@@ -21,6 +26,7 @@ const ownerJoiSchema=joi.object({
     product: joi.array().items(joi.string()).optional(),
     gstin: joi.string().length(15).optional(),
     picture: joi.string().uri().optional(),
+    role: joi.string().valid("owner", "admin").default("owner"),
 });
 
 ownerSchema.statics.validateOwner=function(data){
