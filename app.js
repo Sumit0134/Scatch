@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const expressSession = require("express-session");
 const flash=require("connect-flash");
 const colors = require("colors");
+const mongoStore = require("connect-mongo");
 
 require("dotenv").config();
 
@@ -27,6 +28,9 @@ app.use(expressSession({
     resave: false,
     saveUninitialized: false,
     secret: process.env.EXPRESS_SESSION_SECRET,
+    store: mongoStore.create({
+        mongoUrl: process.env.MONGODB_URL
+    })
 })
 );
 app.use(flash());
