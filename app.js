@@ -45,5 +45,5 @@ app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 
 app.listen(port, () => {
-    console.log(`Sctach is Running on `.yellow + `${process.env.DEV_MODE}`.cyan + ` Mode at: `.yellow + `port:${port}`);
+    console.log(`Sctach is Running on `.yellow + `${process.env.NODE_MODE}`.cyan + ` Mode at: `.yellow + `port:${port}`);
 });
