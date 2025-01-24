@@ -9,72 +9,85 @@
 </head>
 
 <body>
-    <% if(error.length>0){ %>
-        <div id="flashError" class="absolute top-5 p-3 rounded-lg bg-red-500 text-white left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <span class="inline-block text-sm mt-1 mb-1">
-                <%= error %>
-            </span>
-        </div>
-    <% } %>
+    <%- include('./header.ejs') %>
 
-    <% if(success.length>0){ %>
-        <div id="flashSuccess" class="absolute top-5 p-3 rounded-lg bg-blue-500 text-white left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <span class="inline-block text-sm mt-1 mb-1">
-                <%= success %>
-            </span>
-        </div>
-    <% } %>
-
-    <div class="min-h-screen flex flex-col">
-        <div class="container flex flex-grow px-10 py-20">
-            <div class="flex flex-col w-[25%] h-screen items-start">
-                <div class="flex flex-col">
-                    <a class="block w-fit mb-2" href="">All Products</a>
-                    <a class="block w-fit mb-2" href="">Create a New Product</a>
-                </div>
+        <% if(error.length>0){ %>
+            <div id="flashError"
+                class="absolute top-5 p-3 rounded-lg bg-red-500 text-white left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <span class="inline-block text-sm mt-1 mb-1">
+                    <%= error %>
+                </span>
             </div>
+            <% } %>
 
-            <main class="w-[75%] bg-white p-8 shadow ml-4">
-                <h2 class="text-xl mb-4 font-bold">Create a New Product</h2>
-                <form autocomplete="off" action="/products/create" method="post" enctype="multipart/form-data">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-semibold mb-2">Product Details</h3>
-                        <div class="mb-4">
-                            <label class="block mb-2 font-medium">Product Image</label>
-                            <input class="rounded px-4 py-2" type="file" name="image" value="Select File">
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <input class="border outline-none rounded w-full p-3" type="text" name="productName" placeholder="Product Name">
-                            <input class="border outline-none rounded w-full p-3" type="number" name="price" placeholder="Product Price">
-                            <input class="border outline-none rounded w-full p-3" type="number" name="discount" placeholder="Discount Percentage">
-                        </div>
+                <% if(success.length>0){ %>
+                    <div id="flashSuccess"
+                        class="absolute top-5 p-3 rounded-lg bg-blue-500 text-white left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <span class="inline-block text-sm mt-1 mb-1">
+                            <%= success %>
+                        </span>
                     </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-2">Panel Details</h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <input value="#" class="border outline-none rounded w-full p-3" type="text" name="bgColor" placeholder="Background Color">
-                            <input value="#" class="border outline-none rounded w-full p-3" type="text" name="panelColor" placeholder="Panel Color">
-                            <input value="#" class="border outline-none rounded w-full p-3" type="text" name="textColor" placeholder="Text Color">
-                        </div>
-                    </div>
-                    <input class="text-white cursor-pointer bg-blue-600 rounded-lg mt-3 px-5 py-2" type="submit" value="Create">
-                </form>
-            </main>
-        </div>
-    </div>
+                    <% } %>
 
-    <script>
-        if(document.getElementById("flashError") || document.getElementById("flashSuccess")){
-                setTimeout(() => {
-                if(document.getElementById("flashError")){
-                    document.getElementById("flashError").style.display = "none";
-                }
-                if(document.getElementById("flashSuccess")){
-                    document.getElementById("flashSuccess").style.display = "none";
-                }
-            }, 3000);
-        }
-    </script>
+                        <div class="min-h-screen flex flex-col">
+                            <div class="container flex flex-grow px-10 py-20">
+                                <div class="flex flex-col w-[25%] h-screen items-start">
+                                    <div class="flex flex-col">
+                                        <a class="block w-fit mb-2" href="">All Products</a>
+                                        <a class="block w-fit mb-2" href="">Create a New Product</a>
+                                    </div>
+                                </div>
+
+                                <main class="w-[75%] bg-white p-8 shadow ml-4">
+                                    <h2 class="text-xl mb-4 font-bold">Create a New Product</h2>
+                                    <form autocomplete="off" action="/products/create" method="post"
+                                        enctype="multipart/form-data">
+                                        <div class="mb-6">
+                                            <h3 class="text-lg font-semibold mb-2">Product Details</h3>
+                                            <div class="mb-4">
+                                                <label class="block mb-2 font-medium">Product Image</label>
+                                                <input class="rounded px-4 py-2" type="file" name="image"
+                                                    value="Select File">
+                                            </div>
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <input class="border outline-none rounded w-full p-3" type="text"
+                                                    name="productName" placeholder="Product Name">
+                                                <input class="border outline-none rounded w-full p-3" type="number"
+                                                    name="price" placeholder="Product Price">
+                                                <input class="border outline-none rounded w-full p-3" type="number"
+                                                    name="discount" placeholder="Discount Percentage">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold mb-2">Panel Details</h3>
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <input value="#" class="border outline-none rounded w-full p-3"
+                                                    type="text" name="bgColor" placeholder="Background Color">
+                                                <input value="#" class="border outline-none rounded w-full p-3"
+                                                    type="text" name="panelColor" placeholder="Panel Color">
+                                                <input value="#" class="border outline-none rounded w-full p-3"
+                                                    type="text" name="textColor" placeholder="Text Color">
+                                            </div>
+                                        </div>
+                                        <input class="text-white cursor-pointer bg-blue-600 rounded-lg mt-3 px-5 py-2"
+                                            type="submit" value="Create">
+                                    </form>
+                                </main>
+                            </div>
+                        </div>
+
+                        <script>
+                            if (document.getElementById("flashError") || document.getElementById("flashSuccess")) {
+                                setTimeout(() => {
+                                    if (document.getElementById("flashError")) {
+                                        document.getElementById("flashError").style.display = "none";
+                                    }
+                                    if (document.getElementById("flashSuccess")) {
+                                        document.getElementById("flashSuccess").style.display = "none";
+                                    }
+                                }, 3000);
+                            }
+                        </script>
 </body>
 
 </html>

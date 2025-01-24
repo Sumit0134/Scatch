@@ -2,13 +2,14 @@ const express = require("express");
 
 const app = express();
 
-const db = require("./config/mongoose-connection");
+const connection = require("./config/mongoose-connection");
 
 const path = require("path");
 
 const cookieParser = require("cookie-parser");
 const expressSession = require("express-session");
 const flash=require("connect-flash");
+const colors = require("colors");
 
 require("dotenv").config();
 
@@ -30,7 +31,9 @@ app.use(expressSession({
 );
 app.use(flash());
 
-const port = 3000;
+const port = process.env.PORT || 3000;
+
+connection();
 
 app.use("/", indexRouter);
 app.use("/owners", ownersRouter);
@@ -38,5 +41,5 @@ app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 
 app.listen(port, () => {
-    console.log(`App is running at port:${port}`);
+    console.log(`Sctach is Running on `.yellow + `${process.env.DEV_MODE}`.cyan + ` Mode at: `.yellow + `port:${port}`);
 });

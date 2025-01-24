@@ -1,17 +1,15 @@
 const mongoose = require("mongoose");
 
-const dbgr=require("debug")("development:mongoose");
+const colors = require("colors");
 
-const config=require("config");
+const connection = async ()=>{
+    try{
+        const conn=await mongoose.connect(process.env.MONGODB_URL);
+        console.log(`Connected to Database: `.yellow + `${conn.connection.host}`.cyan);
+    } catch(err){
+        console.log(`Error Connecting to Database: `.yellow + ` ${err}`.red);
+    }
+}
 
-mongoose
-    .connect(`${config.get("MONGODB_URI")}/Scatch`)
-    .then(function () {
-        dbgr("connected");
-    })
-    .catch(function (err) {
-        dbgr(err);
-    });
-
-module.exports = mongoose.connection
+module.exports = connection;
 

@@ -37,15 +37,15 @@ router.get("/addtocart/:id", isLoggedIn, async (req, res) => {
         if (!user) {
             req.flash("error", "User not found");
 
-            return res.redirect("/shop");   
+            return res.redirect("/shop");
         }
 
-        let cartProduct=user.cart.find(item=>item.product.toString()===req.params.id);
+        let cartProduct = user.cart.find(item => item.product.toString() === req.params.id);
 
-        if(cartProduct){
+        if (cartProduct) {
             cartProduct.quantity++;
         }
-        else{
+        else {
             user.cart.push({
                 product: req.params.id,
                 quantity: 1,
@@ -57,6 +57,33 @@ router.get("/addtocart/:id", isLoggedIn, async (req, res) => {
         req.flash("success", "Product added to cart");
 
         res.status(200).redirect("/shop");
+    } catch (err) {
+        req.flash("error", err.message);
+
+        res.status(500).redirect("/shop");
+    }
+})
+
+router.get("/cart", isLoggedIn, async (req, res) => {
+    let error = req.flash("error");
+    let success = req.flash("success");
+
+    try {
+        let user = await userModel.findOne({ email: req.user.email }).populate("cart.product");
+
+        if (!user) {
+            req.flash("error", "User not found");
+
+            return res.redirect("/shop");
+        }
+
+        if (user.cart.length === 0) {
+            req.flash("error", "Cart is empty");
+
+            return res.render("cart", { user, error, success });
+        }
+
+        res.render("cart", { user, error, success });
     } catch (err) {
         req.flash("error", err.message);
 
