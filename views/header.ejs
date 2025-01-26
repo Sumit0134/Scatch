@@ -9,20 +9,25 @@
 </head>
 
 <body>
-    <nav class="p-4 h-[4rem] flex justify-between items-center">
+    <nav class="p-4 h-[4rem] flex justify-between items-center bg-gray-800">
         <div>
             <a class="text-2xl text-blue-400 font-semibold" href="">Scatch</a>
         </div>
-        <% var logged=typeof logged !=="undefined" ? logged : true %>
-            <% if(logged){ %>
-                <div class="flex gap-5">
-                    <a class="" href="">Shop</a>
-                    <a href="/cart">Cart</a>
-                    <a href="">My Account</a>
-                    <a class="text-red-600" href="/users/logout">Logout</a>
-                </div>
-                <% } %>
+
+        <% var logged = typeof logged !== "undefined" ? logged : true %>
+        <% if (logged) { %>
+            <div class="flex gap-2 items-center">
+                <a class="text-white hover:text-blue-400" href="/shop">Shop</a>
+                <a class="text-white hover:text-blue-400" href="/cart">Cart</a>
+                <a class="text-white hover:text-blue-400" href="">My Account</a>
+                <a class="text-red-600 hover:text-red-400" href="/users/logout">Logout</a>
+            </div>
+        <% } %>
     </nav>
+
+    <script>
+        // You can include any additional JS or logic here
+    </script>
 </body>
 
 </html>
