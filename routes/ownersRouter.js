@@ -45,7 +45,7 @@ if (process.env.NODE_ENV === "development") {
                         let token=generateToken(createdOwner);
                         res.cookie("token", token);
 
-                        res.status(201).send("Owner created successfully.");
+                        res.status(201).redirect("/shop");
                     }
                 })
             })
